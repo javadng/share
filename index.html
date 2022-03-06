@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <script defer src="app.js"></script>
+    <title>mapty pro</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav__menu">
+        <ul>
+          <li class="nav__item">خانه</li>
+          <li class="nav__item about__app">درباره App</li>
+        </ul>
+        <div class="toggler">
+          <i class="fa fa-bars toggler__menu"></i>
+        </div>
+      </nav>
+      <div class="modal__info hidden_modal">
+        <a class="fa fa-close modal_datail_close"></a>
+        <div class="modal__title"><h2>این اپ چه قابلیت هایی دارد؟</h2></div>
+        <div class="modal__content">
+          <ul>
+            <li>ثبت، حذف، ویرایش هر مارک روی مپ</li>
+            <li>قابلیت کشیدن هر مارکر و تغییر موقعیت مکانی</li>
+            <li>ثبت همه مشخصات در حافظه لوکال مرورگر</li>
+            <li>برنامه نویسی شئ گرا ، حفظ inheritance در تمامی مراحل </li>
+            <li>با کلیک بر روی هر کدام از آیتم های لیست به مختصات آن آیتم منتقل میشوید</li>
+            <li>استفاده از مدال ها برای راهنمایی کاربر</li>
+            <li>استفاده از مدال ها برای راهنمایی کاربر</li>
+            <li>بهینه بودن طراحی در جهت استفاده در موبایل</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal__overlay overlay"></div>
+      <div class="menu">
+        <i class="fa fa-close close__menu--btn"></i>
+        <div class="title">
+          <h2>ثبت ورزش شما</h2>
+        </div>
+        <ul class="workouts__container">
+          <form action="" class="form hidden">
+            <div class="form__row">
+              <label for="#runCyc">نوع</label>
+              <select name="" id="type_workout">
+                <option value="running">دویدن</option>
+                <option value="cycling">دوچرخه</option>
+              </select>
+            </div>
+            <div class="form__row">
+              <label for="">فاصله</label>
+              <input type="text" placeholder="Km" class="distance__input" />
+            </div>
+            <div class="form__row">
+              <label>زمان</label>
+              <input type="text" placeholder="min" class="duration__input" />
+            </div>
+            <div class="form__row">
+              <label>سرعت گام ها</label>
+              <input type="text" placeholder="S/min" class="cadence__input" />
+            </div>
+            <div class="form__row form__row_hidden">
+              <label>بهره پایه</label>
+              <input type="text" placeholder="E/min" class="elevation__input" />
+            </div>
+            <button class="form__sumbit">ثبت</button>
+          </form>
+          <div class="append__after"></div>
+          
+          <!-- li -->
+          <!--        <li class="workout workout__running">
+            <a href="#" class="workout__del"><i class="fa fa-trash"></i></a>
+                       <a href="#" class="workout__change"><i class="fa fa-cogs"></i></a>
+            <h2 class="workout__title">دویدن در اسفند ماه</h2>
+            <div class="workout__detail">
+              <span class="workou_unit">km</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">🏃‍♂️</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">MIN</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">⌚</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">MIN/KM</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">⚡</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">SPM</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">👣</span>
+            </div>
+          </li> -->
+          <!--           <li class="workout workout__cycling">
+            <h2 class="workout__title">دوچرخه سواری در اسفند ماه</h2>
+            <div class="workout__detail">
+              <span class="workou_unit">km</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">🚲</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">MIN</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">⌚</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">KM/H</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">⚡</span>
+            </div>
+            <div class="workout__detail">
+              <span class="workou_unit">M</span>
+              <span class="workou_value">1</span>
+              <span class="workou_icon">🗻</span>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+      <div class="menu__overlay overlay"></div>
+    </header>
+
+    <div id="map"></div>
+
+    <div class="modal hidden_modal">
+      <i class="fa fa-close"></i>
+      <div class="modal__header">
+        <h2>هشدار!</h2>
+      </div>
+      <div class="modal__content">
+        <p>لطفا همه اطلاعات را به صورت یک عدد مثبت وارد کنید !</p>
+      </div>
+    </div>
+  </body>
+</html>
